@@ -92,7 +92,7 @@ cd $BUILD_DIR/vendor/selenium/bin
 
 # Download google chrome driver
 topic "Downloading and installing ChromeDriver"
-chromedriver_url="http://chromedriver.storage.googleapis.com/2.8/chromedriver_linux64.zip"
+chromedriver_url="http://chromedriver.storage.googleapis.com/2.9/chromedriver_linux64.zip"
 curl $chromedriver_url -s -o $BUILD_DIR/vendor/selenium/bin/chromedriver.zip
 unzip $BUILD_DIR/vendor/selenium/bin/chromedriver.zip
 rm $BUILD_DIR/vendor/selenium/bin/chromedriver.zip
