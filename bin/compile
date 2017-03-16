@@ -80,10 +80,11 @@ mv "$BUILD_DIR/vendor/chromedriver/chromedriver" "$BUILD_DIR/vendor/chromedriver
 
 
 mkdir -p "$BUILD_DIR/vendor/google-chrome/"
-mkdir -p "$BUILD_DIR/vendor/google-chrome/bin"
+mkdir -p "$BUILD_DIR/vendor/google-chrome/"
 
-cp "$BUILD_DIR/.apt/opt/google/chrome/chrome" "$BUILD_DIR/vendor/google-chrome/bin"
-cp "$BUILD_DIR/.apt/opt/google/chrome/google-chrome" "$BUILD_DIR/vendor/google-chrome/bin"
+# cp -R "$BUILD_DIR/.apt/opt/google/chrome/" "$BUILD_DIR"
+# cp "$BUILD_DIR/.apt/opt/google/chrome/chrome" "$BUILD_DIR/vendor/google-chrome/bin"
+# cp "$BUILD_DIR/.apt/opt/google/chrome/google-chrome" "$BUILD_DIR/vendor/google-chrome/bin"
 
 
 topic "Writing profile script"
