@@ -68,11 +68,20 @@ fi
 mkdir -p $BUILD_DIR/vendor/selenium/bin
 
 
+topic "Downloading and installing ChromeDriver to $BUILD_DIR"
+mkdir -p "$BUILD_DIR/vendor/chromedriver/"
+mkdir -p "$BUILD_DIR/vendor/chromedriver/bin"
+
+chromedriver_url="http://chromedriver.storage.googleapis.com/2.28/chromedriver_linux64.zip"
+curl $chromedriver_url -s -o "$BUILD_DIR/vendor/chromedriver/chromedriver.zip"
+unzip "$BUILD_DIR/vendor/chromedriver/chromedriver.zip" -d "$BUILD_DIR/vendor/chromedriver"
+rm "$BUILD_DIR/vendor/chromedriver/chromedriver.zip"
+mv "$BUILD_DIR/vendor/chromedriver/chromedriver" "$BUILD_DIR/vendor/chromedriver/bin"
 
 topic "Writing profile script"
 mkdir -p $BUILD_DIR/.profile.d
 cat <<EOF >$BUILD_DIR/.profile.d/000_apt.sh
-export PATH="\$HOME/.apt/usr/bin:\$HOME/vendor/selenium/bin:$PATH"
+export PATH="\$HOME/.apt/usr/bin:\$HOME/vendor/chromedriver/bin:\$HOME/vendor/selenium/bin:$PATH"
 export LD_LIBRARY_PATH="\$HOME/.apt/usr/lib:\$LD_LIBRARY_PATH"
 export INCLUDE_PATH="\$HOME/.apt/usr/include:\$INCLUDE_PATH"
 export CPATH="\$INCLUDE_PATH"
@@ -84,5 +93,3 @@ export LD_LIBRARY_PATH="$BUILD_DIR/.apt/usr/lib:$LD_LIBRARY_PATH"
 export INCLUDE_PATH="$BUILD_DIR/.apt/usr/include:$INCLUDE_PATH"
 export CPATH="$INCLUDE_PATH"
 export CPPPATH="$INCLUDE_PATH"
-
-
