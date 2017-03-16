@@ -78,6 +78,14 @@ unzip "$BUILD_DIR/vendor/chromedriver/chromedriver.zip" -d "$BUILD_DIR/vendor/ch
 rm "$BUILD_DIR/vendor/chromedriver/chromedriver.zip"
 mv "$BUILD_DIR/vendor/chromedriver/chromedriver" "$BUILD_DIR/vendor/chromedriver/bin"
 
+
+mkdir -p "$BUILD_DIR/vendor/google-chrome/"
+mkdir -p "$BUILD_DIR/vendor/google-chrome/bin"
+
+cp "$BUILD_DIR/.apt/opt/google/chrome/chrome" "$BUILD_DIR/vendor/google-chrome/bin"
+cp "$BUILD_DIR/.apt/opt/google/chrome/google-chrome" "$BUILD_DIR/vendor/google-chrome/bin"
+
+
 topic "Writing profile script"
 mkdir -p $BUILD_DIR/.profile.d
 cat <<EOF >$BUILD_DIR/.profile.d/000_apt.sh
